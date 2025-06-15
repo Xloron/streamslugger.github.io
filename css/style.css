@@ -1,0 +1,61 @@
+/* Algemene body styling */
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+/* Header en navigatie */
+header nav {
+  background: #161b22;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navigatie lijst */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigatie links */
+nav a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Hover effect navigatie links */
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero sectie */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Hero titel */
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Knoppen styling */
+.button {
+  display: inline-block;
+  background: #238636;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight:
