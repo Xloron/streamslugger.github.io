@@ -1,13 +1,21 @@
-/* Algemene body styling */
-body {
-  font-family: system-ui, sans-serif;
+/* Zet de body en html op volle hoogte voor sticky layout */
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
   background: #0d1117;
   color: #c9d1d9;
+  font-family: system-ui, sans-serif;
 }
 
-/* Header en navigatie */
+/* Zorg dat main de ruimte opvult */
+body > main {
+  flex: 1;
+}
+
+/* Navigatie header */
 header nav {
   background: #161b22;
   padding: 1rem 2rem;
@@ -16,7 +24,6 @@ header nav {
   align-items: center;
 }
 
-/* Navigatie lijst */
 nav ul {
   list-style: none;
   display: flex;
@@ -25,14 +32,12 @@ nav ul {
   padding: 0;
 }
 
-/* Navigatie links */
 nav a {
   color: #58a6ff;
   text-decoration: none;
   font-weight: 500;
 }
 
-/* Hover effect navigatie links */
 nav a:hover {
   text-decoration: underline;
 }
@@ -43,13 +48,11 @@ nav a:hover {
   text-align: center;
 }
 
-/* Hero titel */
 .hero h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-/* Knoppen styling */
 .button {
   display: inline-block;
   background: #238636;
@@ -59,14 +62,67 @@ nav a:hover {
   border-radius: 0.5rem;
   text-decoration: none;
   font-weight: 600;
+  transition: background-color 0.3s ease;
 }
+
+.button:hover {
+  background: #2ea043;
+}
+
+.button.outline {
+  background: transparent;
+  border: 2px solid #238636;
+  color: #238636;
+}
+
+.button.outline:hover {
+  background: #238636;
+  color: white;
+}
+
+/* Contact formulier */
+.contact {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: #161b22;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(35, 134, 54, 0.3);
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #30363d;
+  border-radius: 0.5rem;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-size: 1rem;
+  font-family: system-ui, sans-serif;
+}
+
+.contact button {
+  background: #238636;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+  background: #2ea043;
+}
+
+/* Footer blijft altijd onderaan */
 footer {
   text-align: center;
   padding: 1rem 0;
   background: #161b22;
   color: #8b949e;
   font-size: 0.9rem;
-  position: relative; /* zorgt dat het niet zweeft */
-  bottom: 0;
-  width: 100%;
 }
