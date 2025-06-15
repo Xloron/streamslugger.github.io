@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | StreamSlugger</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>StreamSlugger</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Over</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact">
+      <h2>Contacteer ons</h2>
+      <p>Heb je vragen, feedback of wil je samenwerken? Laat iets van je horen!</p>
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <label>Naam:<br><input type="text" name="name" required></label><br>
+        <label>Email:<br><input type="email" name="email" required></label><br>
+        <label>Bericht:<br><textarea name="message" rows="6" required></textarea></label><br>
+        <button type="submit">Verstuur</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 StreamSlugger</p>
+  </footer>
+</body>
+</html>
