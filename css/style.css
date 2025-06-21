@@ -56,10 +56,12 @@ nav a:hover {
 .hero-image {
   display: block;
   margin: 2rem auto 1rem auto;
-  max-width: 320px;
-  width: 100%;
+  max-width: 100%;
+  width: 10%;
+  height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 4px 24px rgba(20, 40, 60, 0.25);
+  object-fit: contain;
 }
 
 .button {
