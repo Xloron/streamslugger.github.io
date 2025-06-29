@@ -13,6 +13,11 @@ html, body {
 /* Zorg dat main de ruimte opvult */
 body > main {
   flex: 1;
+  display: flex;                 /* Make main a flex container */
+  justify-content: center;       /* Horizontal center */
+  align-items: center;           /* Vertical center */
+  padding: 2rem;                 /* Optional padding */
+  min-height: 0;                 /* prevent flex overflow issues */
 }
 
 /* Navigatie header */
@@ -66,10 +71,11 @@ nav a:hover {
 /* Intro sectie styling */
 .intro {
   max-width: 800px;
-  margin: 3rem auto;           /* Centrum met ruimte erboven en eronder */
-  padding: 0 1rem;             /* Kleine padding voor mobiel */
-  text-align: center;          /* Tekst centreren */
-  color: #c9d1d9;             /* Lichte tekstkleur, past bij je achtergrond */
+  /* Remove vertical margin to prevent push-down */
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+  color: #c9d1d9;
   font-family: system-ui, sans-serif;
 }
 
