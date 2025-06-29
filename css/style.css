@@ -12,11 +12,11 @@ html, body {
 
 /* Zorg dat main de ruimte opvult */
 body > main {
-  flex: 1;
+  flex: 1 0 auto;          /* flex-grow:1, flex-shrink:0, flex-basis:auto */
   display: flex;
-  flex-direction: column;   /* Belangrijk: stapel secties onder elkaar */
-  justify-content: center;  /* Verticaal centreren */
-  align-items: center;      /* Horizontaal centreren */
+  flex-direction: column;  /* Belangrijk: stapel secties onder elkaar */
+  justify-content: center; /* Verticaal centreren */
+  align-items: center;     /* Horizontaal centreren */
   padding: 2rem;
   min-height: 0;
 }
@@ -191,6 +191,7 @@ nav a:hover {
 
 /* Footer blijft altijd onderaan */
 footer {
+  flex-shrink: 0;          /* voorkom dat footer krimpt */
   text-align: center;
   padding: 1rem 0;
   background: #161b22;
