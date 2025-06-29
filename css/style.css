@@ -13,11 +13,12 @@ html, body {
 /* Zorg dat main de ruimte opvult */
 body > main {
   flex: 1;
-  display: flex;                 /* Make main a flex container */
-  justify-content: center;       /* Horizontal center */
-  align-items: center;           /* Vertical center */
-  padding: 2rem;                 /* Optional padding */
-  min-height: 0;                 /* prevent flex overflow issues */
+  display: flex;
+  flex-direction: column;  /* Voeg dit toe! */
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 0;
 }
 
 /* Navigatie header */
