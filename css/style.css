@@ -14,11 +14,17 @@ html, body {
 body > main {
   flex: 1;
   display: flex;
-  flex-direction: column;  /* Voeg dit toe! */
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;   /* Belangrijk: stapel secties onder elkaar */
+  justify-content: center;  /* Verticaal centreren */
+  align-items: center;      /* Horizontaal centreren */
   padding: 2rem;
   min-height: 0;
+}
+
+/* Zorg dat de hoofdsecties niet te breed zijn en gecentreerd */
+.hero, .intro, .video-section {
+  width: 100%;
+  max-width: 800px;
 }
 
 /* Navigatie header */
@@ -69,10 +75,10 @@ nav a:hover {
   box-shadow: 0 4px 24px rgba(20, 40, 60, 0.25);
   object-fit: contain;
 }
+
 /* Intro sectie styling */
 .intro {
   max-width: 800px;
-  /* Remove vertical margin to prevent push-down */
   margin: 0 auto;
   padding: 0 1rem;
   text-align: center;
@@ -117,7 +123,6 @@ nav a:hover {
   margin-bottom: 0.75rem;
   font-size: 1.125rem;
 }
-
 
 .button {
   display: inline-block;
@@ -215,22 +220,20 @@ footer {
   height: 24px;
   margin-right: 8px;
 }
+
 .video-section {
   display: flex;
-  justify-content: center; /* ✅ Centreert de inhoud horizontaal */
-  align-items: center;      /* ✅ Centreert de inhoud verticaal (indien hoogte toelaat) */
+  justify-content: center; /* Centreert de inhoud horizontaal */
+  align-items: center;      /* Centreert de inhoud verticaal (indien hoogte toelaat) */
   margin: 2rem auto;
   max-width: 960px;
   padding: 0 1rem;
-  text-align: center;       /* ✅ Voor eventuele tekst in de sectie */
+  text-align: center;
 }
 
 .video-section iframe {
   width: 560px;
   height: 315px;
-  max-width: 100%;          /* ✅ Zorgt voor responsiviteit */
+  max-width: 100%;          /* Zorgt voor responsiviteit */
   border: none;
 }
-
-
-
