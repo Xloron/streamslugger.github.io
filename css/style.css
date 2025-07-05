@@ -238,3 +238,21 @@ footer {
   max-width: 100%;          /* Zorgt voor responsiviteit */
   border: none;
 }
+.cta-button {
+  display: inline-block;
+  background-color: #1b2838;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #2a475e;
+}
+
+

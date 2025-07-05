@@ -61,10 +61,20 @@
   <main>
     <!-- jouw hoofdinhoud -->
     <section class="hero">
-      <h2>Welcome to Stream Slugger</h2>
-      <h3>Lets Play with Friends during your Twitch Live Streams.</h3>
-      <img src="images/HeroImage.png" alt="Hero visual" class="hero-image">
-    </section>
+  <h2>Welcome to Stream Slugger</h2>
+  <h3>Let's Play with Friends during your Twitch Live Streams.</h3>
+  <img src="images/HeroImage.png" alt="Hero visual" class="hero-image">
+  <a href="https://store.steampowered.com/app/2218430/Stream_Slugger/?utm_source=website&utm_medium=hero&utm_campaign=cta"
+     class="cta-button"
+     target="_blank"
+     onclick="gtag('event', 'click_to_steam', {
+       'event_category': 'outbound',
+       'event_label': 'Hero Button'
+     });">
+     🎮 Get Stream Slugger on Steam
+  </a>
+</section>
+
 
     <section class="intro">
       <h1>Stream Slugger — Bring Your Twitch Stream to Life with Interactive 3D Characters</h1>
@@ -78,6 +88,7 @@
       </ul>
       <p>Get started today and turn every stream into an unforgettable adventure!</p>
     </section>
+    
 
     <!-- YouTube Video Embed -->
   <section class="video-section">
