@@ -64,16 +64,32 @@
   <h2>Welcome to Stream Slugger</h2>
   <h3>Let's Play with Friends during your Twitch Live Streams.</h3>
   <img src="images/HeroImage.png" alt="Hero visual" class="hero-image">
-  <a href="https://store.steampowered.com/app/2218430/Stream_Slugger/?utm_source=website&utm_medium=hero&utm_campaign=cta"
-     class="button"
-     target="_blank"
-     onclick="gtag('event', 'click_to_steam', {
-       'event_category': 'outbound',
-       'event_label': 'Hero Button'
-     });">
-     🎮 Get Stream Slugger on Steam
-  </a>
-</section>
+
+
+<a href="https://store.steampowered.com/app/2218430/Stream_Slugger/"
+   class="button"
+   target="_blank"
+   onclick="trackSteamClick(event)">
+   🎮 Get Stream Slugger on Steam
+</a>
+
+<script>
+  function trackSteamClick(e) {
+    e.preventDefault();
+    const steamURL = e.currentTarget.href;
+
+    gtag('event', 'conversion', {
+      'send_to': 'AW-699668458/abcdEFGhijk123', // <-- vul deze juist in
+      'event_callback': function () {
+        window.open(steamURL, '_blank');
+      }
+    });
+
+    setTimeout(function () {
+      window.open(steamURL, '_blank');
+    }, 500);
+  }
+</script>
 
 
     <section class="intro">
