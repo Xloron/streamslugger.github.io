@@ -325,4 +325,74 @@ footer {
 .feature-item a:hover {
   text-decoration: underline;
 }
+.get-started {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.125rem;
+  color: #c9d1d9;
+}
+.get-started h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: #58a6ff;
+} 
+.get-started p {
+  margin: 0.5rem 0 1rem;
+}
+.get-started a {
+  color: #58a6ff;
+  font-weight: 600;
+  text-decoration: none;      
+}
+.get-started a:hover {
+  text-decoration: underline;
+}
+.get-started button {
+  background: #238636;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.get-started button:hover {
+  background: #2ea043;
+}
+.get-started button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(35, 134, 54, 0.5);
+}
+.get-started button:active {
+  background: #2ea043;
+  transform: scale(0.98);
+}
+.get-started button:disabled {
+  background: #6a737d;  /* grijs voor disabled */     
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.get-started button:disabled:hover {
+  background: #6a737d;  /* grijs voor disabled hover */
+  color: #c9d1d9;       /* behoud de tekstkleur */      
+}
+.get-started button:disabled:focus {
+  box-shadow: none;     /* geen focus effect voor disabled */
+}
+.get-started button:disabled:active {
+  transform: none;      /* geen active effect voor disabled */
+}
+.get-started button:disabled:active:hover {
+  background: #6a737d;  /* behoud de grijze kleur */
+  color: #c9d1d9;       /* behoud de tekstkleur */
+}
+.get-started button:disabled:active:focus {
+  box-shadow: none;     /* geen focus effect voor disabled */
+}
 
