@@ -238,4 +238,91 @@ footer {
   max-width: 100%;          /* Zorgt voor responsiviteit */
   border: none;
 }
+.documentation {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.125rem;
+  color: #c9d1d9;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+}
+
+.documentation h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: #58a6ff;
+}
+
+.documentation p {
+  margin: 0.5rem 0 0;
+}
+
+.documentation a {
+  color: #58a6ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.documentation a:hover {
+  text-decoration: underline;
+}
+
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.feature-item {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: calc(33.333% - 1rem); /* Drie items per rij met ruimte */
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+}
+.feature-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #58a6ff;
+}
+.feature-item p {
+  font-size: 1rem;
+  color: #c9d1d9;
+  line-height: 1.5;
+}
+.feature-item ul {
+  list-style-type: disc;  /* Gebruik disc voor lijsten */         
+  padding-left: 1.5rem;   /* Voeg padding toe voor inspringing */
+  margin-top: 0.5rem;     /* Ruimte boven de lijst */
+  color: #8b949e;         /* Iets zachtere kleur voor lijst */
+}
+.feature-item ul li {
+  margin-bottom: 0.5rem;  /* Ruimte tussen lijstitems */
+  font-size: 1rem;        /* Zorg dat de tekstgrootte consistent is
+  */
+}
+.feature-item ul li::marker {
+  color: #58a6ff;         /* Accentkleur voor de lijstmarkering */
+}
+.feature-item ul li:hover {
+  color: #58a6ff;         /* Accentkleur voor hover effect */
+}
+.feature-item ul li:hover::marker {
+  color: #58a6ff;         /* Accentkleur voor hover effect op de marker
+  */
+}
+.feature-item a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.feature-item a:hover {
+  text-decoration: underline;
+}
 
