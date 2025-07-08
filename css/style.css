@@ -20,6 +20,49 @@ body > main {
   padding: 2rem;
   min-height: 0;
 }
+/* Hamburger standaard verbergen op desktop */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #58a6ff;
+  cursor: pointer;
+}
+
+/* Nav styling fix */
+nav {
+  position: relative;
+}
+
+/* Mobiele navigatie */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #161b22;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 
 /* Zorg dat de hoofdsecties niet te breed zijn en gecentreerd */
 .hero, .intro, .video-section {
