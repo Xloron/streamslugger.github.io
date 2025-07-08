@@ -42,17 +42,25 @@ nav {
   }
 
   .nav-links {
-    display: none;
+  display: none;
+  flex-direction: column;
+  background: #161b22;
+  position: absolute;
+  top: 100%;
+  left: 0;          /* ← voeg dit toe */
+  right: 0;         /* ← houd dit, om volledige breedte te garanderen */
+  width: 100%;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 1000;    /* ← optioneel: zorg dat het boven andere elementen ligt */
+}
+  .nav-links ul {
+    display: flex;
     flex-direction: column;
-    background: #161b22;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
   }
-
   .nav-links.show {
     display: flex;
   }
