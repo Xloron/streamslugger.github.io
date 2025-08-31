@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page Not Found | Stream Slugger</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Oops! The page you are looking for doesn’t exist. Return to the Stream Slugger homepage." />
+  <link rel="canonical" href="https://www.streamslugger.com/" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/favicon.ico" />
 </head>
+
 <body>
+  <!-- Header / Navigation -->
   <header>
     <nav>
-      <h1>Stream Slugger</h1>
-      <ul>
+      <h1 id="stream-slugger">
+        <a href="index.html">Stream Slugger</a>
+      </h1>
+
+      <!-- Hamburger button -->
+      <button class="hamburger" aria-label="Toggle menu">☰</button>
+
+      <!-- Menu links -->
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="https://docs.streamslugger.com">Docs</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main content -->
   <main>
     <section class="hero">
       <h2>Oops! Page Not Found</h2>
-      <p>The page you’re looking for doesn’t exist. Try going back to the homepage.</p>
+      <p>The page you’re looking for doesn’t exist.</p>
+      <p>Try going back to the homepage or explore other sections of Stream Slugger.</p>
       <a href="index.html" class="button">Go Home</a>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     © 2025 StreamSlugger. All rights reserved.
+    <a class="steam-link" href="https://store.steampowered.com/app/2218430/Stream_Slugger/" target="_blank" rel="noopener">
+      <img src="https://store.steampowered.com/public/images/v6/logo_steam_footer.png" alt="Steam">
+      Stream Slugger on Steam.
+    </a>
   </footer>
 </body>
 </html>
