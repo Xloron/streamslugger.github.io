@@ -1,17 +1,24 @@
-# BEGIN StreamSlugger Redirects & 404
+# =====================================
+# StreamSlugger Optimized Redirects & Security
+# =====================================
 
 # Enable rewrite engine
 RewriteEngine On
 
-# Redirect www to non-www
+# 1️⃣ Redirect www → non-www
 RewriteCond %{HTTP_HOST} ^www\.streamslugger\.com [NC]
 RewriteRule ^(.*)$ https://streamslugger.com/$1 [L,R=301]
 
-# Redirect HTTP to HTTPS
+# 2️⃣ Redirect HTTP → HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://streamslugger.com/$1 [L,R=301]
 
-# Custom 404 page
+# 3️⃣ Custom 404 page
 ErrorDocument 404 /404.html
 
-# END StreamSlugger Redirects & 404
+# 4️⃣ Protect OAuth folder
+<Directory "/auth">
+    Order allow,deny
+    Deny from all
+</Directory>
+
