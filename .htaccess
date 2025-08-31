@@ -1,0 +1,17 @@
+# BEGIN StreamSlugger Redirects & 404
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.streamslugger\.com [NC]
+RewriteRule ^(.*)$ https://streamslugger.com/$1 [L,R=301]
+
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://streamslugger.com/$1 [L,R=301]
+
+# Custom 404 page
+ErrorDocument 404 /404.html
+
+# END StreamSlugger Redirects & 404
