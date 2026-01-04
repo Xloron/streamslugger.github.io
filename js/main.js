@@ -30,10 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Automatisch jaartal in footer
+  // Automatisch jaartal in footer en meta copyright
+  const currentYear = new Date().getFullYear();
+
   const footerYear = document.getElementById("footer-year");
   if (footerYear) {
-    footerYear.textContent = new Date().getFullYear();
+    footerYear.textContent = currentYear;
+  }
+
+  const metaCopyright = document.getElementById("meta-copyright");
+  if (metaCopyright) {
+    metaCopyright.setAttribute("content", `© ${currentYear} Stream Slugger`);
   }
 });
 
