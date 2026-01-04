@@ -7,16 +7,27 @@
   <meta name="description" content="Oops! The page you are looking for doesn’t exist. Return to the Stream Slugger homepage." />
   <link rel="canonical" href="https://www.streamslugger.com/" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCRMK9E2SR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XCRMK9E2SR');
+    gtag('config', 'AW-699668458');
+  </script>
 </head>
 
 <body>
   <!-- Header / Navigation -->
   <header>
     <nav>
-      <h1 id="stream-slugger">
-        <a href="index.html">Stream Slugger</a>
-      </h1>
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.svg" alt="Stream Slugger" class="header-logo" />
+      </a>
 
       <!-- Hamburger button -->
       <button class="hamburger" aria-label="Toggle menu">☰</button>
@@ -49,5 +60,6 @@
       Stream Slugger on Steam.
     </a>
   </footer>
+  <script src="js/main.js"></script>
 </body>
 </html>
