@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Click op header <h1> stuurt naar index.html
-  const h1 = document.getElementById("stream-slugger");
-  if (h1) {
-    h1.addEventListener("click", function () {
-      window.location.href = "index.html";
-    });
-  }
-
   // Hamburger menu toggle
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
@@ -44,3 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
     footerYear.textContent = new Date().getFullYear();
   }
 });
+
+// Track Steam button clicks for analytics
+function trackSteamClick(event) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'click', {
+      'event_category': 'Steam',
+      'event_label': 'Steam Store Button',
+      'value': 1
+    });
+  }
+  return true; // Allow the link to proceed
+}
