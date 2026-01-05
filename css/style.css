@@ -1,40 +1,141 @@
-/* Zet de body en html op volle hoogte voor sticky layout */
-html, body {
+/* ============================================
+   CSS Custom Properties (Variables)
+   ============================================ */
+:root {
+  /* Colors */
+  --color-bg-primary: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-border: #30363d;
+  --color-text-primary: #c9d1d9;
+  --color-text-secondary: #8b949e;
+  --color-accent: #58a6ff;
+  --color-accent-hover: #79c0ff;
+  --color-success: #238636;
+  --color-success-hover: #2ea043;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Typography */
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-sm: 0.9rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: clamp(1.5rem, 4vw, 1.75rem);
+  --font-size-xl: clamp(2rem, 5vw, 2.5rem);
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 4px 24px rgba(20, 40, 60, 0.25);
+  --shadow-glow-accent: 0 0 10px rgba(88, 166, 255, 0.1);
+  --shadow-glow-success: 0 0 10px rgba(35, 134, 54, 0.3);
+
+  /* Layout */
+  --max-width-sm: 600px;
+  --max-width-md: 700px;
+  --max-width-lg: 800px;
+  --max-width-xl: 960px;
+  --header-height: 70px;
+}
+
+/* ============================================
+   Base Styles & Reset
+   ============================================ */
+html {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+body {
+  min-height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  background: #0d1117;
-  color: #c9d1d9;
-  font-family: system-ui, sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
 }
 
-/* Zorg dat main de ruimte opvult */
+/* ============================================
+   Layout - Main Content Area
+   ============================================ */
 body > main {
-  flex: 1 0 auto;          /* flex-grow:1, flex-shrink:0, flex-basis:auto */
+  flex: 1 0 auto;
   display: flex;
-  flex-direction: column;  /* Belangrijk: stapel secties onder elkaar */
-  justify-content: center; /* Verticaal centreren */
-  align-items: center;     /* Horizontaal centreren */
-  padding: 2rem;
-  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg) 0;
+  width: 100%;
+  max-width: 100%;
+  gap: var(--space-lg);
 }
-/* Hamburger standaard verbergen op desktop */
+
+/* ============================================
+   Navigation & Header
+   ============================================ */
+header nav {
+  background: var(--color-bg-secondary);
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
 .hamburger {
   display: none;
   font-size: 2rem;
   background: none;
   border: none;
-  color: #58a6ff;
+  color: var(--color-accent);
   cursor: pointer;
+  padding: var(--space-xs);
+  transition: color var(--transition-fast);
 }
 
-/* Nav styling fix */
+.hamburger:hover {
+  color: var(--color-accent-hover);
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
 nav {
   position: relative;
 }
 
+/* ============================================
+   Responsive Navigation
+   ============================================ */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -43,21 +144,22 @@ nav {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #161b22;
+    background: var(--color-bg-secondary);
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     width: 100%;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    padding: var(--space-sm) var(--space-lg);
+    box-shadow: var(--shadow-md);
     z-index: 1000;
+    animation: slideDown var(--transition-base);
   }
 
   .nav-links ul {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-sm);
     margin: 0;
     padding: 0;
   }
@@ -69,42 +171,51 @@ nav {
   nav ul {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-sm);
     padding: 0;
     margin: 0;
   }
 }
-/* Algemene styling voor de pagina */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 
-
-
-
-/* Zorg dat de hoofdsecties niet te breed zijn en gecentreerd */
-.hero, .intro, .video-section {
+/* ============================================
+   Section Layout
+   ============================================ */
+.hero, .intro, .video-section, .documentation, .get-started {
   width: 100%;
-  max-width: 800px;
+  max-width: var(--max-width-lg);
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+  box-sizing: border-box;
 }
 
-/* Navigatie header */
-header nav {
-  background: #161b22;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Header logo styling */
+/* Logo Styling */
 .logo-link {
   display: inline-block;
   line-height: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-slow);
 }
 
 .logo-link:hover {
   opacity: 0.8;
+}
+
+.logo-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .header-logo {
@@ -119,75 +230,101 @@ header nav {
   }
 }
 
+/* Navigation Links */
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: var(--space-sm);
   margin: 0;
   padding: 0;
 }
 
 nav a {
-  color: #58a6ff;
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  position: relative;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: var(--color-accent-hover);
+  background: rgba(88, 166, 255, 0.1);
 }
 
-/* Hero sectie */
+nav a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
 .hero {
-  padding: 4rem 2rem;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
   text-align: center;
 }
 
 .hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+}
+
+.hero h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
 }
 
 .hero-image {
   display: block;
-  margin: 2rem auto 1rem auto;
-  max-width: 30%;
+  margin: var(--space-lg) auto var(--space-sm) auto;
+  max-width: min(30%, 300px);
   width: 30%;
   height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 24px rgba(20, 40, 60, 0.25);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
   object-fit: contain;
+  transition: transform var(--transition-slow);
 }
 
-/* Intro sectie styling */
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   Intro Section
+   ============================================ */
 .intro {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
   text-align: center;
-  color: #c9d1d9;
-  font-family: system-ui, sans-serif;
+  color: var(--color-text-primary);
 }
 
 .intro h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-sm);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
 }
 
 .intro h2 {
-  font-size: 1.75rem;
-  margin: 2rem 0 1rem 0;
+  font-size: var(--font-size-lg);
+  margin: var(--space-lg) 0 var(--space-sm) 0;
   font-weight: 600;
-  color: #58a6ff; /* accentkleur, zoals in je navigatie links */
+  color: var(--color-accent);
 }
 
 .intro p {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  max-width: 600px;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-md);
+  max-width: var(--max-width-sm);
   margin-left: auto;
   margin-right: auto;
 }
@@ -196,108 +333,160 @@ nav a:hover {
   list-style-type: disc;
   list-style-position: inside;
   text-align: left;
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
+  max-width: var(--max-width-sm);
+  margin: 0 auto var(--space-lg) auto;
   padding-left: 0;
-  color: #8b949e; /* iets zachtere kleur voor lijst */
+  color: var(--color-text-secondary);
 }
 
 .intro ul li {
   margin-bottom: 0.75rem;
-  font-size: 1.125rem;
+  font-size: var(--font-size-md);
+  transition: color var(--transition-fast);
 }
 
+.intro ul li:hover {
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
 .button {
   display: inline-block;
-  background: #238636;
+  background: var(--color-success);
   color: white;
-  padding: 0.75rem 1.5rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem var(--space-md);
+  margin: var(--space-xs);
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
 .button:hover {
-  background: #2ea043;
+  background: var(--color-success-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-success);
+  outline-offset: 4px;
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .button.outline {
   background: transparent;
-  border: 2px solid #238636;
-  color: #238636;
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
 }
 
 .button.outline:hover {
-  background: #238636;
+  background: var(--color-success);
   color: white;
 }
 
-/* Contact formulier */
+/* ============================================
+   Contact Form
+   ============================================ */
 .contact {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem 2rem;
-  background: #161b22;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(35, 134, 54, 0.3);
+  max-width: var(--max-width-sm);
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-glow-success);
+  border: 1px solid var(--color-border);
 }
 
 .contact form input,
 .contact form textarea {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #30363d;
-  border-radius: 0.5rem;
-  background: #0d1117;
-  color: #c9d1d9;
-  font-size: 1rem;
-  font-family: system-ui, sans-serif;
+  margin-bottom: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-family: var(--font-base);
+  transition: border-color var(--transition-fast);
+}
+
+.contact form input:focus,
+.contact form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
 }
 
 .contact button {
-  background: #238636;
+  background: var(--color-success);
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem var(--space-md);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all var(--transition-base);
 }
 
 .contact button:hover {
-  background: #2ea043;
+  background: var(--color-success-hover);
+  transform: translateY(-2px);
 }
 
-/* Footer blijft altijd onderaan */
+.contact button:focus-visible {
+  outline: 2px solid var(--color-success);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
 footer {
-  flex-shrink: 0;          /* voorkom dat footer krimpt */
+  flex-shrink: 0;
   text-align: center;
-  padding: 1rem 0;
-  background: #161b22;
-  color: #8b949e;
-  font-size: 0.9rem;
+  padding: var(--space-sm) 0;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
 }
 
+/* Steam Link */
 .steam-link {
   display: inline-flex;
   align-items: center;
   background-color: #171a21;
   color: #fff;
   padding: 10px 18px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: all var(--transition-base);
   gap: 10px;
 }
 
 .steam-link:hover {
   background-color: #1b2838;
   color: #66c0f4;
+  transform: translateY(-2px);
+}
+
+.steam-link:focus-visible {
+  outline: 2px solid #66c0f4;
+  outline-offset: 4px;
 }
 
 .steam-link img {
@@ -305,177 +494,227 @@ footer {
   margin-right: 8px;
 }
 
+/* ============================================
+   Video Section
+   ============================================ */
 .video-section {
   display: flex;
-  justify-content: center; /* Centreert de inhoud horizontaal */
-  align-items: center;      /* Centreert de inhoud verticaal (indien hoogte toelaat) */
-  margin: 2rem auto;
-  max-width: 960px;
-  padding: 0 1rem;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  max-width: var(--max-width-xl);
 }
 
 .video-section iframe {
-  width: 560px;
-  height: 315px;
-  max-width: 100%;          /* Zorgt voor responsiviteit */
+  width: min(560px, 100%);
+  aspect-ratio: 16 / 9;
   border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
 }
+/* ============================================
+   Documentation Section
+   ============================================ */
 .documentation {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 0.5rem;
-  padding: 1.5rem 2rem;
-  margin: 2rem auto;
-  max-width: 700px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  max-width: var(--max-width-md);
   text-align: center;
-  font-size: 1.125rem;
-  color: #c9d1d9;
-  box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-glow-accent);
 }
 
 .documentation h2 {
-  font-size: 1.75rem;
+  font-size: var(--font-size-lg);
   margin-bottom: 0.75rem;
-  color: #58a6ff;
+  color: var(--color-accent);
 }
 
 .documentation p {
-  margin: 0.5rem 0 0;
+  margin: var(--space-xs) 0 0;
 }
 
 .documentation a {
-  color: #58a6ff;
+  color: var(--color-accent);
   font-weight: 600;
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 .documentation a:hover {
+  color: var(--color-accent-hover);
   text-decoration: underline;
 }
 
+.documentation a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   Features Section - CSS Grid Layout
+   ============================================ */
 .feature-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  width: 100%;
+  max-width: var(--max-width-xl);
 }
+
 .feature-item {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  width: calc(33.333% - 1rem); /* Drie items per rij met ruimte */
-  box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-glow-accent);
+  transition: all var(--transition-base);
 }
+
+.feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md), var(--shadow-glow-accent);
+  border-color: var(--color-accent);
+}
+
 .feature-item h3 {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #58a6ff;
+  margin-bottom: var(--space-xs);
+  color: var(--color-accent);
+  font-weight: 600;
 }
+
 .feature-item p {
-  font-size: 1rem;
-  color: #c9d1d9;
-  line-height: 1.5;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
 }
+
 .feature-item ul {
-  list-style-type: disc;  /* Gebruik disc voor lijsten */         
-  padding-left: 1.5rem;   /* Voeg padding toe voor inspringing */
-  margin-top: 0.5rem;     /* Ruimte boven de lijst */
-  color: #8b949e;         /* Iets zachtere kleur voor lijst */
+  list-style-type: disc;
+  padding-left: var(--space-md);
+  margin-top: var(--space-xs);
+  color: var(--color-text-secondary);
 }
+
 .feature-item ul li {
-  margin-bottom: 0.5rem;  /* Ruimte tussen lijstitems */
-  font-size: 1rem;        /* Zorg dat de tekstgrootte consistent is
-  */
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-base);
+  transition: color var(--transition-fast);
 }
+
 .feature-item ul li::marker {
-  color: #58a6ff;         /* Accentkleur voor de lijstmarkering */
+  color: var(--color-accent);
 }
+
 .feature-item ul li:hover {
-  color: #58a6ff;         /* Accentkleur voor hover effect */
+  color: var(--color-accent);
 }
-.feature-item ul li:hover::marker {
-  color: #58a6ff;         /* Accentkleur voor hover effect op de marker
-  */
-}
+
 .feature-item a {
-  color: #58a6ff;
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 600;
+  transition: color var(--transition-fast);
 }
+
 .feature-item a:hover {
+  color: var(--color-accent-hover);
   text-decoration: underline;
 }
+
+.feature-item a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* ============================================
+   Get Started Section
+   ============================================ */
 .get-started {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 0.5rem;
-  padding: 1.5rem 2rem;
-  margin: 2rem auto;
-  max-width: 700px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  max-width: var(--max-width-md);
   text-align: center;
-  font-size: 1.125rem;
-  color: #c9d1d9;
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
 }
+
 .get-started h2 {
-  font-size: 1.75rem;
+  font-size: var(--font-size-lg);
   margin-bottom: 0.75rem;
-  color: #58a6ff;
-} 
+  color: var(--color-accent);
+}
+
 .get-started p {
-  margin: 0.5rem 0 1rem;
+  margin: var(--space-xs) 0 var(--space-sm);
 }
+
 .get-started a {
-  color: #58a6ff;
+  color: var(--color-accent);
   font-weight: 600;
-  text-decoration: none;      
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
+
 .get-started a:hover {
+  color: var(--color-accent-hover);
   text-decoration: underline;
 }
+
+.get-started a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .get-started button {
-  background: #238636;
+  background: var(--color-success);
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem var(--space-md);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all var(--transition-base);
 }
+
 .get-started button:hover {
-  background: #2ea043;
+  background: var(--color-success-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
-.get-started button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(35, 134, 54, 0.5);
+
+.get-started button:focus-visible {
+  outline: 2px solid var(--color-success);
+  outline-offset: 4px;
 }
+
 .get-started button:active {
-  background: #2ea043;
-  transform: scale(0.98);
+  background: var(--color-success-hover);
+  transform: translateY(0);
 }
+
 .get-started button:disabled {
-  background: #6a737d;  /* grijs voor disabled */     
+  background: #6a737d;
   cursor: not-allowed;
   opacity: 0.6;
+  transform: none;
 }
+
 .get-started button:disabled:hover {
-  background: #6a737d;  /* grijs voor disabled hover */
-  color: #c9d1d9;       /* behoud de tekstkleur */      
-}
-.get-started button:disabled:focus {
-  box-shadow: none;     /* geen focus effect voor disabled */
-}
-.get-started button:disabled:active {
-  transform: none;      /* geen active effect voor disabled */
-}
-.get-started button:disabled:active:hover {
-  background: #6a737d;  /* behoud de grijze kleur */
-  color: #c9d1d9;       /* behoud de tekstkleur */
-}
-.get-started button:disabled:active:focus {
-  box-shadow: none;     /* geen focus effect voor disabled */
+  background: #6a737d;
+  color: var(--color-text-primary);
+  transform: none;
+  box-shadow: none;
 }
 
